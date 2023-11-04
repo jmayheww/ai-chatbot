@@ -15,8 +15,13 @@ class CreateChatSessionsTable extends Migration
     {
         Schema::create('chat_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('ended_at')->nullable();
+            $table->string('status'); // Example values: 'active', 'ended'
             $table->timestamps();
         });
+
     }
 
     /**
