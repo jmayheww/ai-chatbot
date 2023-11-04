@@ -15,8 +15,13 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('chat_session_id')->constrained()->onDelete('cascade')->unique();
+            $table->unsignedTinyInteger('rating');
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
+
+
     }
 
     /**
