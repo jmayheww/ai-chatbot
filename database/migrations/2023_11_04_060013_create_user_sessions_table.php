@@ -15,8 +15,11 @@ class CreateUserSessionsTable extends Migration
     {
         Schema::create('user_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('session_token')->unique();
             $table->timestamps();
         });
+
     }
 
     /**
