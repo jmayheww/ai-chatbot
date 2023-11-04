@@ -15,8 +15,11 @@ class CreateChatbotResponsesTable extends Migration
     {
         Schema::create('chatbot_responses', function (Blueprint $table) {
             $table->id();
+            $table->string('trigger');
+            $table->text('response');
             $table->timestamps();
         });
+
     }
 
     /**
